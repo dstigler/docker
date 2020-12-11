@@ -1,0 +1,14 @@
+docker system prune -a
+docker image rm 0ad07961de5b
+docker image ls
+docker-compose build
+docker-compose up -d
+docker-compose ps
+
+
+docker-compose exec web python3 manage.py migrate
+docker-compose exec postgres psql --username=myproject_web --dbname=myproject_web
+docker run -ti --rm -v /root/myproject/web/:/data/web alpine:latest sh
+
+docker-compose down
+
